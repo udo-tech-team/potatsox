@@ -1,5 +1,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
+inhibit_all_warnings!	#忽略所有警告
+
 platform :ios, '9.0'
 use_frameworks!
 
@@ -77,9 +79,5 @@ end
 
 target "PotatsoModel" do
     model
-end
-
-target "PotatsoLibraryTests" do
-    library
 end
 
