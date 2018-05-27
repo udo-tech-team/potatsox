@@ -275,23 +275,23 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
 
 }
 
-extension VPNStatus {
-
-    var color: UIColor {
-        switch self {
-        case .on, .disconnecting:
-            return Color.StatusOn
-        case .off, .connecting:
-            return Color.StatusOff
-        }
-    }
-
-    var hintDescription: String {
-        switch self {
-        case .on, .disconnecting:
-            return "Disconnect".localized()
-        case .off, .connecting:
-            return "Connect".localized()
-        }
-    }
-}
+//extension VPNStatus {
+//
+//    var color: UIColor {
+//        switch self {
+//        case .on, .disconnecting:
+//            return Color.StatusOn
+//        case .off, .connecting:
+//            return Color.StatusOff
+//        }
+//    }
+//
+//    var hintDescription: String {
+//        switch self {
+//        case .on, .disconnecting:
+//            return "Disconnect".localized()
+//        case .off, .connecting:
+//            return "Connect".localized()
+//        }
+//    }
+//}

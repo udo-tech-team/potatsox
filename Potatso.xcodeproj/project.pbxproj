@@ -212,6 +212,7 @@
 		B8F784671D3678B400F02FF5 /* Settings.h in Headers */ = {isa = PBXBuildFile; fileRef = B8F784651D3678B400F02FF5 /* Settings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8F784681D3678B400F02FF5 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F784661D3678B400F02FF5 /* Settings.m */; };
 		B8F7AE3E1D5F178A005CA41E /* CloudSetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7AE3D1D5F178A005CA41E /* CloudSetManager.swift */; };
+		E93C1E2F20B9AFA0001D9158 /* CrossxxHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C1E2E20B9AFA0001D9158 /* CrossxxHomeVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -887,6 +888,7 @@
 		E46E159320A9755C00E89AF1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E46E159620A9755D00E89AF1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E78608059F51BBF6180C1843 /* Pods-PacketProcessor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PacketProcessor.release.xcconfig"; path = "Pods/Target Support Files/Pods-PacketProcessor/Pods-PacketProcessor.release.xcconfig"; sourceTree = "<group>"; };
+		E93C1E2E20B9AFA0001D9158 /* CrossxxHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossxxHomeVC.swift; sourceTree = "<group>"; };
 		F2765FE72409B9E2FA7F81BB /* Pods-TodayWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayWidget/Pods-TodayWidget.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -997,6 +999,7 @@
 		9B0CFA021C1C0B1A007BD7C6 = {
 			isa = PBXGroup;
 			children = (
+				E93C1E2A20B99FBF001D9158 /* Crossxx */,
 				9B0CFA0D1C1C0B1B007BD7C6 /* Potatso */,
 				9B8705FB1C1D788F00651424 /* PacketTunnel */,
 				9B8193B51CBCFEE700BE320D /* TodayWidget */,
@@ -2001,6 +2004,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E93C1E2A20B99FBF001D9158 /* Crossxx */ = {
+			isa = PBXGroup;
+			children = (
+				E93C1E2E20B9AFA0001D9158 /* CrossxxHomeVC.swift */,
+			);
+			path = Crossxx;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2717,6 +2728,7 @@
 				9BF3034B1CCA1B060096588E /* BaseEmptyView.swift in Sources */,
 				9B5E13BA1C897870007DFE0A /* ProxyConfigurationViewController.swift in Sources */,
 				B8367A811D1B6D5400D50C25 /* BaseButtonRow.swift in Sources */,
+				E93C1E2F20B9AFA0001D9158 /* CrossxxHomeVC.swift in Sources */,
 				B87B980A1D3B64BE00FA66BF /* RequestEventRow.swift in Sources */,
 				B83D3E791D2BA689007655CE /* Event.swift in Sources */,
 				9B17F8EB1C53379700679FCB /* SettingsViewController.swift in Sources */,
