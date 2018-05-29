@@ -212,6 +212,11 @@
 		B8F784671D3678B400F02FF5 /* Settings.h in Headers */ = {isa = PBXBuildFile; fileRef = B8F784651D3678B400F02FF5 /* Settings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8F784681D3678B400F02FF5 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F784661D3678B400F02FF5 /* Settings.m */; };
 		B8F7AE3E1D5F178A005CA41E /* CloudSetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7AE3D1D5F178A005CA41E /* CloudSetManager.swift */; };
+		E919CE3D20BAE15900FA7A1B /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E919CE3C20BAE15900FA7A1B /* Storyboard.storyboard */; };
+		E919CE4120BAE6D000FA7A1B /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = E919CE4020BAE6D000FA7A1B /* View.xib */; };
+		E919CE4320BAE7DE00FA7A1B /* CrossxxHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = E919CE4220BAE7DE00FA7A1B /* CrossxxHome.swift */; };
+		E919CE4520BAFFAC00FA7A1B /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E919CE4420BAFFAC00FA7A1B /* Main.swift */; };
+		E922B5D720BCF9F30071193D /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E922B5D620BCF9F30071193D /* Test.swift */; };
 		E93C1E2F20B9AFA0001D9158 /* CrossxxHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C1E2E20B9AFA0001D9158 /* CrossxxHomeVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -888,6 +893,11 @@
 		E46E159320A9755C00E89AF1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E46E159620A9755D00E89AF1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E78608059F51BBF6180C1843 /* Pods-PacketProcessor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PacketProcessor.release.xcconfig"; path = "Pods/Target Support Files/Pods-PacketProcessor/Pods-PacketProcessor.release.xcconfig"; sourceTree = "<group>"; };
+		E919CE3C20BAE15900FA7A1B /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		E919CE4020BAE6D000FA7A1B /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
+		E919CE4220BAE7DE00FA7A1B /* CrossxxHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossxxHome.swift; sourceTree = "<group>"; };
+		E919CE4420BAFFAC00FA7A1B /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		E922B5D620BCF9F30071193D /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		E93C1E2E20B9AFA0001D9158 /* CrossxxHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossxxHomeVC.swift; sourceTree = "<group>"; };
 		F2765FE72409B9E2FA7F81BB /* Pods-TodayWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayWidget/Pods-TodayWidget.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2007,7 +2017,12 @@
 		E93C1E2A20B99FBF001D9158 /* Crossxx */ = {
 			isa = PBXGroup;
 			children = (
+				E919CE3C20BAE15900FA7A1B /* Storyboard.storyboard */,
 				E93C1E2E20B9AFA0001D9158 /* CrossxxHomeVC.swift */,
+				E919CE4020BAE6D000FA7A1B /* View.xib */,
+				E919CE4220BAE7DE00FA7A1B /* CrossxxHome.swift */,
+				E919CE4420BAFFAC00FA7A1B /* Main.swift */,
+				E922B5D620BCF9F30071193D /* Test.swift */,
 			);
 			path = Crossxx;
 			sourceTree = "<group>";
@@ -2357,7 +2372,9 @@
 				9B0CFA191C1C0B1B007BD7C6 /* LaunchScreen.storyboard in Resources */,
 				B8319A0D1D1BD696001E50C2 /* Localizable.strings in Resources */,
 				1EF602951F113A660005E0C7 /* GeoLite2-Country.mmdb in Resources */,
+				E919CE4120BAE6D000FA7A1B /* View.xib in Resources */,
 				9B8285471CE20DE40027D15C /* HMScanner.bundle in Resources */,
+				E919CE3D20BAE15900FA7A1B /* Storyboard.storyboard in Resources */,
 				9B0CFA161C1C0B1B007BD7C6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2699,12 +2716,14 @@
 				9B1F74601C2F84250028C1A6 /* AppInitializer.swift in Sources */,
 				9B54CC441C1C266C00DDEEBB /* UIViewControllerExtensions.swift in Sources */,
 				9B0CFA0F1C1C0B1B007BD7C6 /* AppDelegate.swift in Sources */,
+				E922B5D720BCF9F30071193D /* Test.swift in Sources */,
 				B8A09D801D51B9A900A9A989 /* RealmCloud.swift in Sources */,
 				B8A09D7E1D51B9A900A9A989 /* PrepareZoneOperation.swift in Sources */,
 				9BB3F73C1CC3D3DE00C2DD05 /* RecentRequestsCell.swift in Sources */,
 				9BD4CACA1CB9600D00F99BF9 /* AlertUtils.swift in Sources */,
 				B829C1721D4395BC00C17B82 /* QRCodeScannerVC.m in Sources */,
 				B87B98041D3B423B00FA66BF /* PaddingLabel.swift in Sources */,
+				E919CE4320BAE7DE00FA7A1B /* CrossxxHome.swift in Sources */,
 				B8CCC6E51CFDCFD8000E7E2E /* RuleSetCell.swift in Sources */,
 				B803A6961D0165EA003EA9AA /* CloudViewController.swift in Sources */,
 				B8A09D7F1D51B9A900A9A989 /* PushLocalChangesBaseOperation.swift in Sources */,
@@ -2743,6 +2762,7 @@
 				B8A09D7C1D51B9A900A9A989 /* FetchCloudChangesOperation.swift in Sources */,
 				B896A8401D548AAC009E4BF5 /* ICloudSetupOperation.swift in Sources */,
 				B8A09D691D51B42B00A9A989 /* CloudKitRecord.swift in Sources */,
+				E919CE4520BAFFAC00FA7A1B /* Main.swift in Sources */,
 				9BB3F7441CC60B6F00C2DD05 /* Error.swift in Sources */,
 				9B76EEAD1C9005D2002BF5D1 /* RuleConfigurationViewController.swift in Sources */,
 			);

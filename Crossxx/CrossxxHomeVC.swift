@@ -18,11 +18,14 @@ private let kFormDNS = "dns"
 private let kFormProxies = "proxies"
 private let kFormDefaultToProxy = "defaultToProxy"
 
-class CrossxxHomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterProtocol, UITextFieldDelegate {
+class CrossxxHomeVC: FormViewController, HomePresenterProtocol, UITextFieldDelegate {
     
     let presenter = HomePresenter()
     
     var ruleSetSection: Section!
+    
+    //宽高比4/3
+    var background = UIImageView()
     
     var status: VPNStatus {
         didSet(o) {
@@ -43,20 +46,46 @@ class CrossxxHomeVC: FormViewController, UINavigationControllerDelegate, HomePre
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Fix a UI stuck bug
-        navigationController?.delegate = self
+        //设置顶栏字体颜色为白色
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         // Post an empty message so we could attach to packet tunnel process
-        tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 200)
+        
+//        tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 200)
+        
+        //设置导航栏背景为空图片
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        //设置导航栏阴影为空图片
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        navigationController?.navigationBar.isTranslucent = true
+        
+        background.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        view.addSubview(background)
+        setupLayout()
+        constrain(background, tableView, view) { (background, tableView, view) in
+            background.width == view.width
+            background.height == view.width * (3/4)
+            background.top == view.top
+            background.leading == view.leading
+            
+            tableView.width == view.width
+            tableView.height == view.width
+            tableView.top == background.bottom
+            tableView.leading == view.leading
+        }
         Manager.sharedManager.postMessage()
         handleRefreshUI()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
     }
-    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(false)
+//        //设置顶栏字体颜色为黑色
+//        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
+//    }
     // MARK: - HomePresenter Protocol
     
     func handleRefreshUI() {
@@ -176,7 +205,7 @@ class CrossxxHomeVC: FormViewController, UINavigationControllerDelegate, HomePre
         super.loadView()
         view.backgroundColor = Color.Background
         view.addSubview(connectButton)
-        setupLayout()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -186,7 +215,7 @@ class CrossxxHomeVC: FormViewController, UINavigationControllerDelegate, HomePre
     }
     
     func setupLayout() {
-        constrain(connectButton, view) { connectButton, view in
+        constrain(connectButton, background) { connectButton, view in
             
             connectButton.centerX == view.centerX
             connectButton.centerY == view.centerY
