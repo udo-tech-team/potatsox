@@ -1,56 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Test-->
-        <scene sceneID="Gsx-my-yQc">
+        <!--View Controller-->
+        <scene sceneID="wGc-sM-4Fw">
             <objects>
-                <viewController id="xwA-89-Vil" customClass="Test" customModule="Potatso" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hal-hX-zrQ">
+                <viewController id="lK2-zr-ci2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yf1-NQ-nNW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TB2-dg-WdQ">
-                                <rect key="frame" x="0.0" y="281.5" width="375" height="385.5"/>
-                                <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Nw-kl-Qha">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="281.5"/>
-                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="9Nw-kl-Qha" secondAttribute="height" multiplier="4:3" id="Ugj-Tw-SrA"/>
-                                </constraints>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="9Nw-kl-Qha" firstAttribute="top" secondItem="hal-hX-zrQ" secondAttribute="top" id="4uR-vr-UCt"/>
-                            <constraint firstItem="TB2-dg-WdQ" firstAttribute="leading" secondItem="5Xd-eV-Bfb" secondAttribute="leading" id="6kz-Si-aCf"/>
-                            <constraint firstItem="9Nw-kl-Qha" firstAttribute="leading" secondItem="5Xd-eV-Bfb" secondAttribute="leading" id="9ll-7I-otY"/>
-                            <constraint firstItem="TB2-dg-WdQ" firstAttribute="width" secondItem="hal-hX-zrQ" secondAttribute="width" id="Fjd-hi-d8b"/>
-                            <constraint firstItem="TB2-dg-WdQ" firstAttribute="top" secondItem="9Nw-kl-Qha" secondAttribute="bottom" id="IDa-IE-wqr"/>
-                            <constraint firstItem="9Nw-kl-Qha" firstAttribute="width" secondItem="hal-hX-zrQ" secondAttribute="width" id="frr-Hs-4wY"/>
-                            <constraint firstItem="5Xd-eV-Bfb" firstAttribute="bottom" secondItem="TB2-dg-WdQ" secondAttribute="bottom" id="q8r-vz-DVY"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="5Xd-eV-Bfb"/>
+                        <viewLayoutGuide key="safeArea" id="imb-WP-GAw"/>
                     </view>
-                    <connections>
-                        <outlet property="backgroundImageView" destination="9Nw-kl-Qha" id="ghO-kR-wvF"/>
-                        <outlet property="tableViewConstraint" destination="TB2-dg-WdQ" id="HGp-KO-43H"/>
-                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nuE-Oo-PxF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lac-hJ-U6m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="49" y="28"/>
+            <point key="canvasLocation" x="-1086" y="-493"/>
         </scene>
     </scenes>
 </document>

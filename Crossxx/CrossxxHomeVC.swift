@@ -63,6 +63,9 @@ class CrossxxHomeVC: FormViewController, HomePresenterProtocol, UITextFieldDeleg
         
         navigationController?.navigationBar.isTranslucent = true
         
+        //设置顶栏字体颜色为白色
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+        
         background.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
         view.addSubview(background)
         setupLayout()
@@ -79,15 +82,15 @@ class CrossxxHomeVC: FormViewController, HomePresenterProtocol, UITextFieldDeleg
         }
         Manager.sharedManager.postMessage()
         handleRefreshUI()
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
     }
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(false)
-//        //设置顶栏字体颜色为黑色
-//        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
-//    }
-    // MARK: - HomePresenter Protocol
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(false)
+        //设置顶栏字体颜色为黑色
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
+    }
+
     func handleRefreshUI() {
         if presenter.group.isDefault {
             status = Manager.sharedManager.vpnStatus
@@ -104,11 +107,44 @@ class CrossxxHomeVC: FormViewController, HomePresenterProtocol, UITextFieldDeleg
         form.delegate = nil
         form.removeAll()
         form +++ generateProxySection()
+            <<< LabelRow() {
+                $0.title = "账户"
+                }.cellSetup({ (cell, row) -> () in
+                    cell.imageView?.image = #imageLiteral(resourceName: "Proxy")
+                    cell.accessoryType = .disclosureIndicator
+                    cell.selectionStyle = .default
+                }).onCellSelection({ [unowned self](cell, row) -> () in
+                    cell.setSelected(false, animated: true)
+                    let userVC = UserViewVontroller()
+                    self.navigationController?.pushViewController(userVC, animated: true)
+                })
+            <<< LabelRow() {
+                $0.title = "设置"
+                }.cellSetup({ (cell, row) -> () in
+                    cell.imageView?.image = #imageLiteral(resourceName: "Proxy")
+                    cell.accessoryType = .disclosureIndicator
+                    cell.selectionStyle = .default
+                }).onCellSelection({ [unowned self](cell, row) -> () in
+                    cell.setSelected(false, animated: true)
+                    let settingVC = SettingViewVontroller()
+                    self.navigationController?.pushViewController(settingVC, animated: true)
+                })
+            <<< LabelRow() {
+                $0.title = "帮助"
+                }.cellSetup({ (cell, row) -> () in
+                    cell.imageView?.image = #imageLiteral(resourceName: "Proxy")
+                    cell.accessoryType = .disclosureIndicator
+                    cell.selectionStyle = .default
+                }).onCellSelection({ [unowned self](cell, row) -> () in
+                    cell.setSelected(false, animated: true)
+                    let helpVC = HelpViewVontroller()
+                    self.navigationController?.pushViewController(helpVC, animated: true)
+                })
         
         form.delegate = self
         tableView?.reloadData()
     }
-    
+
     func updateConnectButton() {
         connectButton.isEnabled = [VPNStatus.on, VPNStatus.off].contains(status)
         connectButton.setTitleColor(UIColor.init(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: UIControlState())
@@ -129,6 +165,7 @@ class CrossxxHomeVC: FormViewController, HomePresenterProtocol, UITextFieldDeleg
         if let proxy = presenter.proxy {
             proxySection <<< ProxyRow(kFormProxies) {
                 $0.value = proxy
+                print(proxy)
                 }.cellSetup({ (cell, row) -> () in
                     cell.accessoryType = .disclosureIndicator
                     cell.selectionStyle = .default
@@ -141,6 +178,7 @@ class CrossxxHomeVC: FormViewController, HomePresenterProtocol, UITextFieldDeleg
                 $0.title = "选择线路"
                 $0.value = "None".localized()
                 }.cellSetup({ (cell, row) -> () in
+                    cell.imageView?.image = #imageLiteral(resourceName: "Proxy")
                     cell.accessoryType = .disclosureIndicator
                     cell.selectionStyle = .default
                 }).onCellSelection({ [unowned self](cell, row) -> () in

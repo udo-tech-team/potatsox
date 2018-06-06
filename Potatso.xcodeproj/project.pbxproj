@@ -213,11 +213,11 @@
 		B8F784681D3678B400F02FF5 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F784661D3678B400F02FF5 /* Settings.m */; };
 		B8F7AE3E1D5F178A005CA41E /* CloudSetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7AE3D1D5F178A005CA41E /* CloudSetManager.swift */; };
 		E919CE3D20BAE15900FA7A1B /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E919CE3C20BAE15900FA7A1B /* Storyboard.storyboard */; };
-		E919CE4120BAE6D000FA7A1B /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = E919CE4020BAE6D000FA7A1B /* View.xib */; };
-		E919CE4320BAE7DE00FA7A1B /* CrossxxHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = E919CE4220BAE7DE00FA7A1B /* CrossxxHome.swift */; };
-		E919CE4520BAFFAC00FA7A1B /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E919CE4420BAFFAC00FA7A1B /* Main.swift */; };
 		E922B5D720BCF9F30071193D /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E922B5D620BCF9F30071193D /* Test.swift */; };
 		E93C1E2F20B9AFA0001D9158 /* CrossxxHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C1E2E20B9AFA0001D9158 /* CrossxxHomeVC.swift */; };
+		E9C06B3C20C79F7C00302958 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C06B3B20C79F7C00302958 /* UserViewController.swift */; };
+		E9C06B3E20C7BCC000302958 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C06B3D20C7BCC000302958 /* HelpViewController.swift */; };
+		E9C06B4020C7C2A700302958 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C06B3F20C7C2A700302958 /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -894,11 +894,11 @@
 		E46E159620A9755D00E89AF1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E78608059F51BBF6180C1843 /* Pods-PacketProcessor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PacketProcessor.release.xcconfig"; path = "Pods/Target Support Files/Pods-PacketProcessor/Pods-PacketProcessor.release.xcconfig"; sourceTree = "<group>"; };
 		E919CE3C20BAE15900FA7A1B /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
-		E919CE4020BAE6D000FA7A1B /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
-		E919CE4220BAE7DE00FA7A1B /* CrossxxHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossxxHome.swift; sourceTree = "<group>"; };
-		E919CE4420BAFFAC00FA7A1B /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		E922B5D620BCF9F30071193D /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		E93C1E2E20B9AFA0001D9158 /* CrossxxHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossxxHomeVC.swift; sourceTree = "<group>"; };
+		E9C06B3B20C79F7C00302958 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		E9C06B3D20C7BCC000302958 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		E9C06B3F20C7C2A700302958 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		F2765FE72409B9E2FA7F81BB /* Pods-TodayWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayWidget/Pods-TodayWidget.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2019,10 +2019,10 @@
 			children = (
 				E919CE3C20BAE15900FA7A1B /* Storyboard.storyboard */,
 				E93C1E2E20B9AFA0001D9158 /* CrossxxHomeVC.swift */,
-				E919CE4020BAE6D000FA7A1B /* View.xib */,
-				E919CE4220BAE7DE00FA7A1B /* CrossxxHome.swift */,
-				E919CE4420BAFFAC00FA7A1B /* Main.swift */,
 				E922B5D620BCF9F30071193D /* Test.swift */,
+				E9C06B3B20C79F7C00302958 /* UserViewController.swift */,
+				E9C06B3F20C7C2A700302958 /* SettingViewController.swift */,
+				E9C06B3D20C7BCC000302958 /* HelpViewController.swift */,
 			);
 			path = Crossxx;
 			sourceTree = "<group>";
@@ -2221,7 +2221,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = TouchingApp;
 				TargetAttributes = {
 					9B0CFA0A1C1C0B1A007BD7C6 = {
@@ -2372,7 +2372,6 @@
 				9B0CFA191C1C0B1B007BD7C6 /* LaunchScreen.storyboard in Resources */,
 				B8319A0D1D1BD696001E50C2 /* Localizable.strings in Resources */,
 				1EF602951F113A660005E0C7 /* GeoLite2-Country.mmdb in Resources */,
-				E919CE4120BAE6D000FA7A1B /* View.xib in Resources */,
 				9B8285471CE20DE40027D15C /* HMScanner.bundle in Resources */,
 				E919CE3D20BAE15900FA7A1B /* Storyboard.storyboard in Resources */,
 				9B0CFA161C1C0B1B007BD7C6 /* Assets.xcassets in Resources */,
@@ -2703,6 +2702,7 @@
 				B83AA5761D38E98A007905B4 /* RequestOverviewVC.swift in Sources */,
 				9B5C00261CBFB35C008DDE7A /* ConfigGroupCell.swift in Sources */,
 				B8C256AE1D1A93DA0074D3B1 /* FlatButton.swift in Sources */,
+				E9C06B4020C7C2A700302958 /* SettingViewController.swift in Sources */,
 				9B8193ED1CBE4DCA00BE320D /* UrlHandler.swift in Sources */,
 				9B1F74761C3164AD0028C1A6 /* VPN.swift in Sources */,
 				B8A09D7B1D51B9A900A9A989 /* AlertOperation.swift in Sources */,
@@ -2722,8 +2722,8 @@
 				9BB3F73C1CC3D3DE00C2DD05 /* RecentRequestsCell.swift in Sources */,
 				9BD4CACA1CB9600D00F99BF9 /* AlertUtils.swift in Sources */,
 				B829C1721D4395BC00C17B82 /* QRCodeScannerVC.m in Sources */,
+				E9C06B3E20C7BCC000302958 /* HelpViewController.swift in Sources */,
 				B87B98041D3B423B00FA66BF /* PaddingLabel.swift in Sources */,
-				E919CE4320BAE7DE00FA7A1B /* CrossxxHome.swift in Sources */,
 				B8CCC6E51CFDCFD8000E7E2E /* RuleSetCell.swift in Sources */,
 				B803A6961D0165EA003EA9AA /* CloudViewController.swift in Sources */,
 				B8A09D7F1D51B9A900A9A989 /* PushLocalChangesBaseOperation.swift in Sources */,
@@ -2737,6 +2737,7 @@
 				9B76EEB91C911CBF002BF5D1 /* ProxySelectionViewController.swift in Sources */,
 				B8C0FE0F1D5DF96500737454 /* PushLocalModifiedChangesOperation.swift in Sources */,
 				9BF303461CC8A1F60096588E /* LogDetailViewController.swift in Sources */,
+				E9C06B3C20C79F7C00302958 /* UserViewController.swift in Sources */,
 				9B1D9B7B1CA4C45F0078D814 /* HUDUtils.swift in Sources */,
 				B8C0FE131D5DFDB500737454 /* PushLocalDeletedChangesOperation.swift in Sources */,
 				B8822CCD1D2AA70A00AD252C /* Receipt.m in Sources */,
@@ -2762,7 +2763,6 @@
 				B8A09D7C1D51B9A900A9A989 /* FetchCloudChangesOperation.swift in Sources */,
 				B896A8401D548AAC009E4BF5 /* ICloudSetupOperation.swift in Sources */,
 				B8A09D691D51B42B00A9A989 /* CloudKitRecord.swift in Sources */,
-				E919CE4520BAFFAC00FA7A1B /* Main.swift in Sources */,
 				9BB3F7441CC60B6F00C2DD05 /* Error.swift in Sources */,
 				9B76EEAD1C9005D2002BF5D1 /* RuleConfigurationViewController.swift in Sources */,
 			);
@@ -2973,14 +2973,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -3022,14 +3030,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

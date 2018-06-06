@@ -63,9 +63,12 @@ class ProxyRowCell: Cell<Proxy>, CellType {
             iconImageView.height == 14
             iconImageView.centerY == contentView.centerY
             titleLabel.centerY == iconImageView.centerY
-            titleLabel.leading == iconImageView.trailing + 10
+            titleLabel.leading == iconImageView.trailing + 12
             titleLabel.trailing == contentView.trailing - 16
             titleLabel.bottom == contentView.bottom - 16
+//            titleLabel.centerY == contentView.centerY
+//            titleLabel.width == contentView.width / 3
+//            titleLabel.trailing == contentView.trailing - 16
         }
     }
 

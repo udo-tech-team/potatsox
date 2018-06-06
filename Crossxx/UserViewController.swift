@@ -1,16 +1,16 @@
 //
-//  Main.swift
+//  UserViewController.swift
 //  Potatso
 //
-//  Created by chinghoi on 2018/5/27.
+//  Created by chinghoi on 2018/6/6.
 //  Copyright © 2018年 TouchingApp. All rights reserved.
 //
 
 import UIKit
 
-class Main: UIViewController {
+class UserViewVontroller: UIViewController {
     override func viewDidLoad() {
-        print("调用成功")
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.blue
     }
 }
