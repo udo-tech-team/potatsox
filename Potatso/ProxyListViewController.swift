@@ -70,12 +70,16 @@ class ProxyListViewController: FormViewController {
                     $0.value = proxy
                 }.cellSetup({ (cell, row) -> () in
                     cell.selectionStyle = .none
-                    //创建一个按钮
-                    let button: UIButton = UIButton(type: .infoLight)
-                    //设置按钮位置和大小
-                    button.frame = CGRect(x: cell.frame.origin.x + UIScreen.main.bounds.width - cell.frame.size.height, y: cell.frame.origin.y, width: cell.frame.size.height, height: cell.frame.size.height)
-                    cell.addSubview(button)
-                    button.addTarget(self, action: #selector(self.buttonAction), for: .touchUpInside)
+                    ////备用,勿删
+//                    //创建一个按钮
+//                    let button: UIButton = UIButton(type: .infoLight)
+//                    //设置按钮位置和大小
+//                    button.frame = CGRect(x: cell.frame.origin.x + UIScreen.main.bounds.width - cell.frame.size.height, y: cell.frame.origin.y, width: cell.frame.size.height, height: cell.frame.size.height)
+//                    cell.addSubview(button)
+                    //button.addTarget(self, action: #selector(self.buttonAction), for: .touchUpInside)
+                    
+                    cell.accessoryType = .detailDisclosureButton
+                    
                 }).onCellSelection({ [unowned self] (cell, row) in
                     cell.setSelected(false, animated: true)
                     let proxy = row.value
@@ -116,17 +120,35 @@ class ProxyListViewController: FormViewController {
         tableView?.reloadData()
     }
 
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        print(indexPath.row)
+        proxies = DBUtils.allNotDeleted(Proxy.self, sorted: "createAt").map({ $0 })
+        
+        let proxy = proxies[indexPath.row - 1]
+        if proxy?.type != .none {
+            self.showProxyConfiguration(proxy)
+        }        
+    }
+    
     func showProxyConfiguration(_ proxy: Proxy?) {
         let vc = ProxyConfigurationViewController(upstreamProxy: proxy)
         navigationController?.pushViewController(vc, animated: true)
     }
-
-    @objc func buttonAction() {
-        print("点击成功")
-        isButtonSelected = true
-        //let vc = ProxyConfigurationViewController()
-        //navigationController?.pushViewController(vc, animated: true)
-    }
+//备用,勿删
+//    @objc func buttonAction(_ sender: AnyObject) {
+//
+//        let btn = sender as! UIButton
+//        let cell = superUITableViewCell(of: btn)!
+//        //let cell = btn.superView(of: UITableViewCell.self)!
+//        let indexPath = tableView.indexPath(for: cell)
+//        let label = cell.viewWithTag(1) as! UILabel
+//        print(label.text!)
+//        print("indexPath：\(indexPath!)")
+//        print("点击成功")
+//        isButtonSelected = true
+//        //let vc = ProxyConfigurationViewController()
+//        //navigationController?.pushViewController(vc, animated: true)
+//    }
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if allowNone && indexPath.row == 0 {
             return false
@@ -159,5 +181,13 @@ class ProxyListViewController: FormViewController {
         tableView?.tableFooterView = UIView()
         tableView?.tableHeaderView = UIView()
     }
-
+    //返回button所在的UITableViewCell
+    func superUITableViewCell(of: UIButton) -> UITableViewCell? {
+        for view in sequence(first: of.superview, next: { $0?.superview }) {
+            if let cell = view as? UITableViewCell {
+                return cell
+            }
+        }
+        return nil
+    }
 }
