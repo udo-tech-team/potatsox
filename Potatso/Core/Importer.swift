@@ -52,7 +52,8 @@ struct Importer {
         if Proxy.uriIsShadowsocks(result) {
             importSS(result)
         }else {
-            importConfig(result, isURL: true)
+            self.viewController?.showTextHUD("无法识别的二维码", dismissAfterDelay: 1.5)
+            //importConfig(result, isURL: true)
         }
     }
     

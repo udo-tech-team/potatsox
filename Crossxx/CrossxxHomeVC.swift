@@ -84,6 +84,7 @@ class CrossxxHomeVC: FormViewController, HomePresenterProtocol, UITextFieldDeleg
         handleRefreshUI()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(qRCode))
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(false)
@@ -102,6 +103,10 @@ class CrossxxHomeVC: FormViewController, HomePresenterProtocol, UITextFieldDeleg
     @objc func add() {
         let vc = ProxyConfigurationViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+    @objc func qRCode() {
+        let importer = Importer(vc: self)
+        importer.importConfigFromQRCode()
     }
     func updateForm() {
         form.delegate = nil
