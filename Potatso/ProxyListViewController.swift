@@ -68,6 +68,23 @@ class ProxyListViewController: FormViewController {
             section
                 <<< ProxyRow () {
                     $0.value = proxy
+                    let deleteAction = SwipeAction(style: .destructive, title: "删除") { (action, row, completionHandler) in
+                        print("Delete")
+                        let indexPath = row.indexPath!
+                        print(indexPath)
+                        let item = (self.form[indexPath] as? ProxyRow)?.value
+                        do {
+                            try DBUtils.softDelete((item?.uuid)!, type: Proxy.self)
+                            self.proxies.remove(at: indexPath.row-1)
+                            self.form[indexPath].hidden = true
+                            self.form[indexPath].evaluateHidden()
+                        }catch {
+                            self.showTextHUD("\("Fail to delete item".localized()): \((error as NSError).localizedDescription)", dismissAfterDelay: 1.5)
+                        }
+                        
+                        completionHandler?(true)
+                    }
+                    $0.trailingSwipe.actions = [deleteAction]
                 }.cellSetup({ (cell, row) -> () in
                     cell.selectionStyle = .none
                     ////备用,勿删
@@ -129,7 +146,7 @@ class ProxyListViewController: FormViewController {
             self.showProxyConfiguration(proxy)
         }        
     }
-    
+
     func showProxyConfiguration(_ proxy: Proxy?) {
         let vc = ProxyConfigurationViewController(upstreamProxy: proxy)
         navigationController?.pushViewController(vc, animated: true)
@@ -159,7 +176,6 @@ class ProxyListViewController: FormViewController {
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return .delete
     }
-
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             guard indexPath.row < proxies.count, let item = (form[indexPath] as? ProxyRow)?.value else {
@@ -175,7 +191,15 @@ class ProxyListViewController: FormViewController {
             }
         }
     }
-
+//    //返回编辑类型，滑动删除
+//    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+//        return UITableViewCellEditingStyle.delete
+//    }
+//
+    //在这里修改删除按钮的文字
+    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+        return "点击删除"
+    }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView?.tableFooterView = UIView()
@@ -189,5 +213,21 @@ class ProxyListViewController: FormViewController {
             }
         }
         return nil
+    }
+}
+extension UIResponder {
+    
+    func next<T: UIResponder>(_ type: T.Type) -> T? {
+        return next as? T ?? next?.next(type)
+    }
+}
+extension UITableViewCell {
+    
+    var tableView: UITableView? {
+        return next(UITableView.self)
+    }
+    
+    var indexPath: IndexPath? {
+        return tableView?.indexPath(for: self)
     }
 }

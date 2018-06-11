@@ -278,8 +278,8 @@ NSString * const CDZQRScanningErrorDomain = @"com.cdzombak.qrscanningviewcontrol
                 [wSelf close];
             }];
         } else {
-            [self showTextHUD:NSLocalizedString(@"qrcode.nocode", nil) dismissAfterDelay:1.0f];
             [self dismissViewControllerAnimated:YES completion:nil];
+            [self showTextHUD:NSLocalizedString(@"qrcode.nocode", nil) dismissAfterDelay:1.0f];
         }
     }];
 }

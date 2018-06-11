@@ -40,12 +40,15 @@ struct Importer {
         vc?.resultBlock = { [weak vc] result in
             vc?.navigationController?.popViewController(animated: true)
             self.onImportInput(result!)
+            print("调用了importConfigFromQRCode------1")
         }
         vc?.errorBlock = { [weak vc] error in
             vc?.navigationController?.popViewController(animated: true)
             self.viewController?.showTextHUD("\(error)", dismissAfterDelay: 1.5)
+            print("调用了importConfigFromQRCode-------2")
         }
         viewController?.navigationController?.pushViewController(vc!, animated: true)
+        print("调用了importConfigFromQRCode")
     }
     
     func onImportInput(_ result: String) {
