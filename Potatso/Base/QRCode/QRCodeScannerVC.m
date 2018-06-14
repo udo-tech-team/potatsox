@@ -75,6 +75,7 @@ NSString * const CDZQRScanningErrorDomain = @"com.cdzombak.qrscanningviewcontrol
 
     self.view.backgroundColor = [UIColor blackColor];
 
+    //相册
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"qrcode.album", nil) style:UIBarButtonItemStylePlain target:self action:@selector(clickAlbumButton)];
 
     UILongPressGestureRecognizer *torchGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleTorchRecognizerTap:)];
@@ -247,7 +248,7 @@ NSString * const CDZQRScanningErrorDomain = @"com.cdzombak.qrscanningviewcontrol
 }
 
 
-/// 点击相册按钮
+/// 相册按钮
 - (void)clickAlbumButton {
 
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
@@ -272,12 +273,14 @@ NSString * const CDZQRScanningErrorDomain = @"com.cdzombak.qrscanningviewcontrol
         if (values.count > 0) {
             if (self.resultBlock) {
                 self.resultBlock(values.firstObject);
+                NSLog(@"二维码识别成功");
             }
             CDZWeakSelf wSelf = self;
-            [self dismissViewControllerAnimated:NO completion:^{
+            [self dismissViewControllerAnimated:YES completion:^{
                 [wSelf close];
             }];
         } else {
+            NSLog(@"二维码识别失败");
             [self dismissViewControllerAnimated:YES completion:nil];
             [self showTextHUD:NSLocalizedString(@"qrcode.nocode", nil) dismissAfterDelay:1.0f];
         }

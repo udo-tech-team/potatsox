@@ -72,9 +72,9 @@ class ProxyListViewController: FormViewController {
                         print("Delete")
                         let indexPath = row.indexPath!
                         print(indexPath)
-                        let item = (self.form[indexPath] as? ProxyRow)?.value
+                        //let item = (self.form[indexPath] as? ProxyRow)?.value
                         do {
-                            try DBUtils.softDelete((item?.uuid)!, type: Proxy.self)
+                            try DBUtils.softDelete((proxy?.uuid)!, type: Proxy.self)
                             self.proxies.remove(at: indexPath.row-1)
                             self.form[indexPath].hidden = true
                             self.form[indexPath].evaluateHidden()

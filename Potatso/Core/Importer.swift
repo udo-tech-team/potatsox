@@ -36,6 +36,7 @@ struct Importer {
     }
     
     func importConfigFromQRCode() {
+        print("调用了importConfigFromQRCode")
         let vc = QRCodeScannerVC()
         vc?.resultBlock = { [weak vc] result in
             vc?.navigationController?.popViewController(animated: true)
@@ -48,11 +49,11 @@ struct Importer {
             print("调用了importConfigFromQRCode-------2")
         }
         viewController?.navigationController?.pushViewController(vc!, animated: true)
-        print("调用了importConfigFromQRCode")
     }
     
     func onImportInput(_ result: String) {
         if Proxy.uriIsShadowsocks(result) {
+            self.viewController?.dismiss()
             importSS(result)
         }else {
             self.viewController?.showTextHUD("无法识别的二维码", dismissAfterDelay: 1.5)
