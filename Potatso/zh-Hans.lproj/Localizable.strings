@@ -46,8 +46,14 @@
 "Encryption" = "加密";
 "Fail" = "失败";
 "Fail to add ruleset" = "添加规则组失败";
+"Fail to add free line" = "添加免费线路失败";
+"Free line" = "免费线路";
 "Fail to change dns" = "无法更改 DNS";
 "Fail to delete item" = "删除失败";
+"Config in use" = "配置正被使用中";
+"Fail to switch proxy" = "切换代理失败";
+"Realm transaction error" = "Realm 事务操作异常";
+"Proxy row index error" = "代理行索引錯誤";
 "Fail to modify default to proxy" = "无法修改默认路由";
 "Fail to parse proxy config" = "无法解析代理配置";
 "Fail to save config." = "无法保存配置.";

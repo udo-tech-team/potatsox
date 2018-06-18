@@ -112,6 +112,7 @@ class CrossxxHomeVC: FormViewController, HomePresenterProtocol, UITextFieldDeleg
         form.delegate = nil
         form.removeAll()
         form +++ generateProxySection()
+        /*
             <<< LabelRow() {
                 $0.title = "账户"
                 }.cellSetup({ (cell, row) -> () in
@@ -145,6 +146,7 @@ class CrossxxHomeVC: FormViewController, HomePresenterProtocol, UITextFieldDeleg
                     let helpVC = HelpViewVontroller()
                     self.navigationController?.pushViewController(helpVC, animated: true)
                 })
+                */
         
         form.delegate = self
         tableView?.reloadData()

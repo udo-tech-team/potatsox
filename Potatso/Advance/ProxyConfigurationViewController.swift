@@ -34,6 +34,7 @@ class ProxyConfigurationViewController: FormViewController {
     
     init(upstreamProxy: Proxy? = nil) {
         if let proxy = upstreamProxy {
+            print("get upstream proxy:\(String(describing: upstreamProxy))")
             self.upstreamProxy = Proxy(value: proxy)
             self.isEdit = true
         }else {
@@ -117,6 +118,7 @@ class ProxyConfigurationViewController: FormViewController {
             }.cellSetup { cell, row in
                 cell.textField.placeholder = "Proxy Password".localized()
             }
+            /*
             <<< SwitchRow(kProxyFormOta) {
                 $0.title = "One Time Auth".localized()
                 $0.value = self.upstreamProxy.ota
@@ -127,6 +129,7 @@ class ProxyConfigurationViewController: FormViewController {
                     return false
                 }
             }
+            */
             <<< PushRow<String>(kProxyFormProtocol) {
                 $0.title = "Protocol".localized()
                 $0.value = self.upstreamProxy.ssrProtocol
@@ -208,6 +211,7 @@ class ProxyConfigurationViewController: FormViewController {
                 break
             }
             let ota = values[kProxyFormOta] as? Bool ?? false
+            print("ota value:\(ota)")
             upstreamProxy.type = type
             upstreamProxy.name = name
             upstreamProxy.host = host

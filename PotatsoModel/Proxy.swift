@@ -77,6 +77,7 @@ open class Proxy: BaseModel {
     @objc open dynamic var ssrProtocol: String?
     @objc open dynamic var ssrObfs: String?
     @objc open dynamic var ssrObfsParam: String?
+    @objc open dynamic var inUse: Bool = false
 
     open static let ssUriPrefix = "ss://"
     open static let ssrUriPrefix = "ssr://"

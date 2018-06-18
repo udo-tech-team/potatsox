@@ -61,12 +61,15 @@ open class DBUtils {
 
     open static func hardDelete<T: BaseModel>(_ id: String, type: T.Type, inRealm realm: Realm? = nil) throws {
         let mRealm = currentRealm(realm)
+        print("try delete id\(id), type\(type)")
         guard let object: T = DBUtils.get(id, type: type, inRealm: mRealm) else {
             return
         }
+        print("begin delete id\(id), type\(type)")
         mRealm.beginWrite()
         mRealm.delete(object)
         try mRealm.commitWrite()
+        print("finish delete id\(id), type\(type)")
     }
 
     open static func hardDelete<T: BaseModel>(_ ids: [String], type: T.Type, inRealm realm: Realm? = nil) throws {
@@ -99,6 +102,20 @@ open class DBUtils {
         }
         try mRealm.commitWrite()
     }
+    
+    open static func updateProxyInuse(proxy: Proxy) throws {
+        // set one proxy in use and others not.
+        let mRealm = try! Realm()
+        mRealm.beginWrite()
+        for pxy in mRealm.objects(Proxy.self) {
+            if pxy == proxy {
+                pxy.inUse = true
+            } else {
+                pxy.inUse = false
+            }
+        }
+        try mRealm.commitWrite()
+    }
 }
 
 
@@ -106,7 +123,8 @@ open class DBUtils {
 extension DBUtils {
 
     public static func allNotDeleted<T: BaseModel>(_ type: T.Type, filter: String? = nil, sorted: String? = nil, inRealm realm: Realm? = nil) -> Results<T> {
-        let deleteFilter = "deleted = false"
+        //let deleteFilter = "deleted = false"
+        let deleteFilter = " deleted = false || deleted = true "
         var mFilter = deleteFilter
         if let filter = filter {
             mFilter += " && " + filter
@@ -121,7 +139,7 @@ extension DBUtils {
             res = res.filter(filter)
         }
         if let sorted = sorted {
-            res = res.sorted(byKeyPath: sorted)
+            res = res.sorted(byKeyPath: sorted, ascending: false)
         }
         return res
     }

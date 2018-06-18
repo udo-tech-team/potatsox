@@ -20,11 +20,19 @@ class ProxyListViewController: FormViewController {
     let allowNone: Bool
     let chooseCallback: ((Proxy?) -> Void)?
     
+    var free_proxy_bob: Proxy
+    var free_proxy_alice: Proxy
+    
     var isButtonSelected = false
 
     init(allowNone: Bool = false, chooseCallback: ((Proxy?) -> Void)? = nil) {
         self.chooseCallback = chooseCallback
         self.allowNone = allowNone
+        self.free_proxy_bob = Proxy()
+        self.free_proxy_alice = Proxy()
+        self.free_proxy_bob.name = "abc"
+        self.free_proxy_alice.name = "def"
+        print("bob:\(self.free_proxy_bob.name), alice:\(self.free_proxy_alice.name)")
         super.init(style: .plain)
     }
     
@@ -43,8 +51,66 @@ class ProxyListViewController: FormViewController {
         let vc = ProxyConfigurationViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @objc func setFreeLine(proxy: Proxy? = nil) {
+        if let proxy = proxy {
+            proxy.name = "Free"
+            proxy.host = "free0.ssr666.win"
+            proxy.password = "123456"
+            proxy.port = 80
+            proxy.type = ProxyType.ShadowsocksR
+            proxy.authscheme = "aes-256-cfb"
+            proxy.ssrProtocol = "origin"
+            proxy.ssrObfs = "http_simple"
+            proxy.ssrObfsParam = "bing.com"
+        } else {
+            // TODO with nil
+        }
+    }
+    
+    @objc func insertFreeLine() {
+        self.setFreeLine(proxy: self.free_proxy_bob)
+        self.setFreeLine(proxy: self.free_proxy_alice)
+        
+        self.free_proxy_alice.password = "654321"
+        self.free_proxy_alice.host = "free1.ssr666.win"
+        self.free_proxy_alice.name = "Free line".localized() + " 00-09am"
+        
+        self.free_proxy_bob.password = "123456"
+        self.free_proxy_bob.host = "free2.ssr666.win"
+        self.free_proxy_bob.name = "Free line".localized() + " 09-17pm"
+        
+        do {
+            print("try insert free lines")
+            var bob_exist = false
+            var alice_exist = false
+            let tmp_proxies = DBUtils.allNotDeleted(Proxy.self, sorted: "createAt").map({ $0 })
+            for pxy in tmp_proxies {
+                print(pxy.name)
+                if pxy.name == self.free_proxy_bob.name {
+                    print("bob exists!")
+                    bob_exist = true
+                }
+                if pxy.name == self.free_proxy_alice.name {
+                    print("alice exists")
+                    alice_exist = true
+                }
+            }
+            if !alice_exist {
+                print("alice not exist, try add one.")
+                try DBUtils.add(self.free_proxy_alice)
+            }
+            if !bob_exist {
+                print("bob not exist, try add one.")
+                try DBUtils.add(self.free_proxy_bob)
+            }
+        } catch {
+            self.showTextHUD("Fail to add free line".localized(), dismissAfterDelay: 1.5)
+        }
+    }
 
     func reloadData() {
+        self.insertFreeLine()
         proxies = DBUtils.allNotDeleted(Proxy.self, sorted: "createAt").map({ $0 })
 //        if allowNone {
 //            proxies.insert(nil, at: 0)
@@ -52,6 +118,8 @@ class ProxyListViewController: FormViewController {
         form.delegate = nil
         form.removeAll()
         let section = Section("高速线路")
+        
+            /*
             <<< LabelRow() {
                 //https://blog.xmartlabs.com/2016/09/06/Eureka-custom-row-tutorial/
                 $0.title = "需要自定义 ROW 的 cell"
@@ -64,17 +132,32 @@ class ProxyListViewController: FormViewController {
                     let userVC = UserViewVontroller()
                     self.navigationController?.pushViewController(userVC, animated: true)
                 })
+                */
+        var need_desc = false
         for proxy in proxies {
+            need_desc = true
             section
                 <<< ProxyRow () {
                     $0.value = proxy
+                    print($0.value)
+                    print("proxy in use:" + String(proxy!.inUse))
                     let deleteAction = SwipeAction(style: .destructive, title: "删除") { (action, row, completionHandler) in
                         print("Delete")
                         let indexPath = row.indexPath!
                         print(indexPath)
                         //let item = (self.form[indexPath] as? ProxyRow)?.value
+                        if proxy!.inUse {
+                            let warn_info = "Fail to delete item".localized() + ":" + "Config in use".localized()
+                            self.showTextHUD(warn_info, dismissAfterDelay: 1.5)
+                            return
+                        }
+                        
                         do {
-                            try DBUtils.softDelete((proxy?.uuid)!, type: Proxy.self)
+                            print("in row delete proxy, uuid:\(String(describing: proxy?.uuid)), type:\(Proxy.self)")
+                            try DBUtils.hardDelete((proxy?.uuid)!, type: Proxy.self)
+                            guard indexPath.row >= 1 else {
+                                throw "Proxy row index error".localized() + ":" + String(indexPath.row)
+                            }
                             self.proxies.remove(at: indexPath.row-1)
                             self.form[indexPath].hidden = true
                             self.form[indexPath].evaluateHidden()
@@ -103,20 +186,44 @@ class ProxyListViewController: FormViewController {
                     if self.isButtonSelected == false {
                     if let cb = self.chooseCallback {
                         cb(proxy)
+                        // update proxies inuse status
+                        do {
+                            try DBUtils.updateProxyInuse(proxy: proxy!)
+                        } catch {
+                            let warn_info = "Fail to switch proxy".localized() + ":" + "Realm transaction error".localized()
+                            self.showTextHUD(warn_info, dismissAfterDelay: 1.5)
+                            return
+                        }
                         self.close()
                     }
                     } else if self.isButtonSelected == true {
                             if proxy?.type != .none {
+                                print("show proxy:\(String(describing: proxy))")
                                 self.showProxyConfiguration(proxy)
                         }
                         self.isButtonSelected = false
                     }
                 })
         }
+        
+        if need_desc {
+            section <<< LabelRow { row in
+                row.title = "Tell user how to delete/switch proxy"
+                row.cell.textLabel?.numberOfLines = 1
+                //row.cell.height = ({return 10})
+                row.cell.textLabel?.adjustsFontSizeToFitWidth = true
+                row.cell.textLabel?.textColor = UIColor.blue
+                row.cell.textLabel?.font = UIFont(name: "Arial", size: 14)
+            }
+        }
+        
         form +++ section
+        /*
             <<< ButtonRow(){
                 $0.title = "购买线路"
         }
+        */
+        
         
         form +++ Section("免费线路")
             <<< LabelRow() {
@@ -130,9 +237,11 @@ class ProxyListViewController: FormViewController {
                     let userVC = UserViewVontroller()
                     self.navigationController?.pushViewController(userVC, animated: true)
                 })
+            /* TODO
             <<< ButtonRow(){
                 $0.title = "积分兑换"
-        }
+ 
+            }*/
         form.delegate = self
         tableView?.reloadData()
     }
@@ -140,14 +249,19 @@ class ProxyListViewController: FormViewController {
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         print(indexPath.row)
         proxies = DBUtils.allNotDeleted(Proxy.self, sorted: "createAt").map({ $0 })
-        
-        let proxy = proxies[indexPath.row - 1]
+        var idx = 0
+        if indexPath.row >= 1 {
+            idx = indexPath.row - 1
+        }
+        print("idx=\(idx), indexPath.row=\(indexPath.row)")
+        let proxy = proxies[indexPath.row]
         if proxy?.type != .none {
             self.showProxyConfiguration(proxy)
         }        
     }
 
     func showProxyConfiguration(_ proxy: Proxy?) {
+        print("try to edit proxy config, proxy:\(String(describing: proxy))")
         let vc = ProxyConfigurationViewController(upstreamProxy: proxy)
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -182,6 +296,7 @@ class ProxyListViewController: FormViewController {
                 return
             }
             do {
+                print("in table view try delete uuid\(item.uuid), proxy\(Proxy.self)")
                 try DBUtils.softDelete(item.uuid, type: Proxy.self)
                 proxies.remove(at: indexPath.row)
                 form[indexPath].hidden = true
