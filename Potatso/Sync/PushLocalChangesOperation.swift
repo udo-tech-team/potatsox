@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import PSOperations
+//import PSOperations
 import CloudKit
-
+/*
 class PushLocalChangesOperation: PSOperations.Operation {
 
     let zoneID: CKRecordZoneID
@@ -85,3 +85,4 @@ class PushLocalChangesOperation: PSOperations.Operation {
     }
 
 }
+ */

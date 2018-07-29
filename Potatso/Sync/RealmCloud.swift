@@ -134,7 +134,7 @@ public enum CustomRealmErrorCode: Int {
     case addressSpaceExhausted
     case schemaMismatch
 }
-
+/*
 public func createAlertOperation(_ error: NSError) -> AlertOperation {
     let alert = AlertOperation()
     
@@ -168,6 +168,7 @@ public func createAlertOperation(_ error: NSError) -> AlertOperation {
     
     return alert
 }
+ */
 
 // Extend `CKErrorCode` to provide more descriptive errors to user.
 extension CKError: CustomStringConvertible {

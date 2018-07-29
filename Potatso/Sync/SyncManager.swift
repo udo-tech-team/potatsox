@@ -62,7 +62,8 @@ open class SyncManager {
         let s: SyncServiceProtocol
         switch type {
         case .iCloud:
-            s = ICloudSyncService()
+            //s = ICloudSyncService()
+            return nil
         default:
             return nil
         }
@@ -74,8 +75,8 @@ open class SyncManager {
         guard let currentVC = vc ?? UIApplication.shared.keyWindow?.rootViewController else {
             return
         }
-        let syncVC = SyncVC()
-        currentVC.show(syncVC, sender: self)
+        //let syncVC = SyncVC()
+        //currentVC.show(syncVC, sender: self)
     }
 
 }

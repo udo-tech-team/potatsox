@@ -7,10 +7,10 @@
 //
 
 import Foundation
-import PSOperations
+//import PSOperations
 import CloudKit
 import Async
-
+/*
 class ICloudSetupOperation: GroupOperation {
 
     init(completion: ((Error?) -> Void)? = nil) {
@@ -39,4 +39,4 @@ class ICloudSetupOperation: GroupOperation {
         super.init(operations: [prepareZoneOperation])
     }
 
-}
+}*/

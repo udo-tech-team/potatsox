@@ -1,7 +1,7 @@
 import Foundation
 import RealmSwift
 import CloudKit
-import PSOperations
+//import PSOperations
 
 struct FetchResults {
     var changedRecords: [CKRecord] = []
@@ -11,7 +11,7 @@ struct FetchResults {
         return changedRecords.count + deletedRecordIDs.count
     }
 }
-
+/*
 class FetchCloudChangesOperation: PSOperations.Operation {
     
     let zoneID: CKRecordZoneID
@@ -198,3 +198,4 @@ class FetchCloudChangesOperation: PSOperations.Operation {
         }
     }
 }
+ */

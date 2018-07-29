@@ -8,10 +8,11 @@
 
 import Foundation
 import CloudKit
-import PSOperations
+//import PSOperations
 import PotatsoModel
 import Async
 
+/*
 class ICloudSyncService: SyncServiceProtocol {
 
     let operationQueue = PSOperations.OperationQueue()
@@ -117,4 +118,5 @@ class ICloudSyncService: SyncServiceProtocol {
         unsubscribeNotification()
     }
 
-}
+}*/
+

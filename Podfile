@@ -45,7 +45,7 @@ target "Potatso" do
     pod 'Alamofire'
     pod 'ObjectMapper'
     pod 'CocoaLumberjack/Swift', '~> 3.0.0'
-    pod 'PSOperations'
+#    pod 'PSOperations'
     tunnel
     library
     fabric

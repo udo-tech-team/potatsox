@@ -1,8 +1,9 @@
 import Foundation
 import RealmSwift
 import CloudKit
-import PSOperations
+//import PSOperations
 
+/*
 class PushLocalChangesBaseOperation: PSOperations.Operation {
     
     let zoneID: CKRecordZoneID
@@ -157,3 +158,4 @@ class PushLocalChangesBaseOperation: PSOperations.Operation {
 
     
 }
+ */

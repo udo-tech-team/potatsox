@@ -8,7 +8,7 @@
 
 import Foundation
 import CloudKit
-import PSOperations
+/*import PSOperations
 
 class PushLocalModifiedChangesOperation: PushLocalChangesBaseOperation {
 
@@ -24,4 +24,4 @@ class PushLocalModifiedChangesOperation: PushLocalChangesBaseOperation {
         pushLocalRecords(recordsToSave, recordIDsToDelete: nil, completionHandler: completionHandler)
     }
 
-}
+}*/

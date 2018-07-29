@@ -7,9 +7,10 @@
  */
 
 import UIKit
-import PSOperations
+//import PSOperations
 import CloudKit
 
+/*
 open class AlertOperation: PSOperations.Operation {
     // MARK: Properties
     
@@ -82,4 +83,5 @@ open class AlertOperation: PSOperations.Operation {
         }
     }
 }
+ */
 
