@@ -55,9 +55,9 @@ class ProxyListViewController: FormViewController {
     @objc func setFreeLine(proxy: Proxy? = nil) {
         if let proxy = proxy {
             proxy.name = "Free"
-            proxy.host = "free0.ssr666.win"
-            proxy.password = "123456"
-            proxy.port = 80
+            proxy.host = "a.xhide.live"
+            proxy.password = "ded36zcm"
+            proxy.port = 8088
             proxy.type = ProxyType.ShadowsocksR
             proxy.authscheme = "aes-256-cfb"
             proxy.ssrProtocol = "origin"
@@ -72,12 +72,12 @@ class ProxyListViewController: FormViewController {
         self.setFreeLine(proxy: self.free_proxy_bob)
         self.setFreeLine(proxy: self.free_proxy_alice)
         
-        self.free_proxy_alice.password = "654321"
-        self.free_proxy_alice.host = "free1.ssr666.win"
+        self.free_proxy_alice.password = "ded36zcm"
+        self.free_proxy_alice.host = "a.xhide.live"
         self.free_proxy_alice.name = "Free line".localized() + " 00-09am"
         
-        self.free_proxy_bob.password = "123456"
-        self.free_proxy_bob.host = "free2.ssr666.win"
+        self.free_proxy_bob.password = "rdwqc7es"
+        self.free_proxy_bob.host = "b.xhide.live"
         self.free_proxy_bob.name = "Free line".localized() + " 09-17pm"
         
         do {
@@ -110,7 +110,7 @@ class ProxyListViewController: FormViewController {
     }
 
     func reloadData() {
-        self.insertFreeLine()
+        // self.insertFreeLine()
         proxies = DBUtils.allNotDeleted(Proxy.self, sorted: "createAt").map({ $0 })
 //        if allowNone {
 //            proxies.insert(nil, at: 0)

@@ -24,6 +24,8 @@ class CrossxxHomeVC: FormViewController, HomePresenterProtocol, UITextFieldDeleg
     
     var ruleSetSection: Section!
     
+    var alerted: Bool = false
+    
     //宽高比4/3
     var background = UIImageView()
     
@@ -48,6 +50,27 @@ class CrossxxHomeVC: FormViewController, HomePresenterProtocol, UITextFieldDeleg
         super.viewDidLoad()
         //设置顶栏字体颜色为白色
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+        
+        // privacy alert
+        // create the alert
+        if !alerted {
+            let alert = UIAlertController(title: "Terms of service and privacy", message: "By starting VPN you agree with the Terms of Service and Privacy Policy", preferredStyle: UIAlertControllerStyle.alert)
+            
+            // check privacy
+            let link = "https://github.com/itrump/alice/blob/master/ios/crossxx.licence.md"
+            alert.addAction(UIAlertAction(title: "See terms of use", style: UIAlertActionStyle.default, handler: {
+                (action:UIAlertAction!) -> Void in
+                UIApplication.shared.openURL(NSURL(string: link)! as URL)
+                print("something here... button click or action logging")
+            }))
+            
+            // add an action (button)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+            alerted = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

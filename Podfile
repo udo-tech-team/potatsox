@@ -62,13 +62,13 @@ target "PacketProcessor" do
     socket
 end
 
-target "TodayWidget" do
-    pod 'Cartography'
-    pod 'SwiftColor'
-    library
-    socket
-    model
-end
+#target "TodayWidget" do
+#    pod 'Cartography'
+#    pod 'SwiftColor'
+#    library
+#    socket
+#    model
+#end
 
 target "PotatsoLibrary" do
     library
