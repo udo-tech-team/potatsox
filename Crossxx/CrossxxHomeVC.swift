@@ -89,7 +89,7 @@ class CrossxxHomeVC: FormViewController, HomePresenterProtocol, UITextFieldDeleg
         //设置顶栏字体颜色为白色
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         
-        background.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        background.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         view.addSubview(background)
         setupLayout()
         constrain(background, tableView, view) { (background, tableView, view) in
@@ -205,10 +205,10 @@ class CrossxxHomeVC: FormViewController, HomePresenterProtocol, UITextFieldDeleg
                 })
         }else {
             proxySection <<< LabelRow() {
-                $0.title = "选择线路"
+                $0.title = "Select Lines"
                 $0.value = "None".localized()
                 }.cellSetup({ (cell, row) -> () in
-                    cell.imageView?.image = #imageLiteral(resourceName: "Proxy")
+                    cell.imageView?.image = #imageLiteral(resourceName: "List")
                     cell.accessoryType = .disclosureIndicator
                     cell.selectionStyle = .default
                 }).onCellSelection({ [unowned self](cell, row) -> () in

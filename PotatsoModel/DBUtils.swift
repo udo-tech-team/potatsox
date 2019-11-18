@@ -188,7 +188,7 @@ extension DBUtils {
         let rulesets = mRealm.objects(RuleSet.self).filter(filter).map({ $0 })
         let groups = mRealm.objects(ConfigurationGroup.self).filter(filter).map({ $0 })
         var objects: [BaseModel] = []
-        
+        /*
         var iterator1: LazyMapIterator<RLMIterator<Proxy>, Proxy>? = nil
         iterator1 = proxies.makeIterator()
         iterator1?.forEach({ (tObj) in
@@ -206,6 +206,7 @@ extension DBUtils {
         iterator3?.forEach({ (tObj) in
             objects.append(tObj as BaseModel)
         })
+        */
         return objects
     }
 
@@ -216,7 +217,7 @@ extension DBUtils {
         let rulesets = mRealm.objects(RuleSet.self).filter(filter).map({ $0 })
         let groups = mRealm.objects(ConfigurationGroup.self).filter(filter).map({ $0 })
         var objects: [BaseModel] = []
-        
+        /*
         var iterator1: LazyMapIterator<RLMIterator<Proxy>, Proxy>? = nil
         iterator1 = proxies.makeIterator()
         iterator1?.forEach({ (tObj) in
@@ -234,6 +235,7 @@ extension DBUtils {
         iterator3?.forEach({ (tObj) in
             objects.append(tObj as BaseModel)
         })
+        */
         return objects
     }
 }

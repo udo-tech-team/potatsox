@@ -117,7 +117,7 @@ class ProxyListViewController: FormViewController {
 //        }
         form.delegate = nil
         form.removeAll()
-        let section = Section("高速线路")
+        let section = Section("Lines")
         
             /*
             <<< LabelRow() {
@@ -141,7 +141,7 @@ class ProxyListViewController: FormViewController {
                     $0.value = proxy
                     print($0.value)
                     print("proxy in use:" + String(proxy!.inUse))
-                    let deleteAction = SwipeAction(style: .destructive, title: "删除") { (action, row, completionHandler) in
+                    let deleteAction = SwipeAction(style: .destructive, title: "Del") { (action, row, completionHandler) in
                         print("Delete")
                         let indexPath = row.indexPath!
                         print(indexPath)
@@ -313,7 +313,7 @@ class ProxyListViewController: FormViewController {
 //
     //在这里修改删除按钮的文字
     func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
-        return "点击删除"
+        return "Delete"
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
