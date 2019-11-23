@@ -31,7 +31,6 @@ class CloudSetManager {
                 uuidsArray.append(tObj as String)
             })
             */
-            
             API.updateRuleSetListDetail(uuidsArray) { (response) in
                 if let sets = response.result.value {
                     do {

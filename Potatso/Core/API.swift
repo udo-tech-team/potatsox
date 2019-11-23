@@ -62,13 +62,9 @@ extension RuleSet: Mappable {
             return
         }
         var rules: [Rule] = []
-        // if let parsedObject = Mapper<Rule>().mapArray(JSONArray: rulesJSON as! [[String : Any]]){
-        let parsedObject = Mapper<Rule>().mapArray(JSONArray: rulesJSON as! [[String : Any]])
-            /*
-            if parsedObject != nil {
+        if let parsedObject:[Rule] = Mapper<Rule>().mapArray(JSONArray: rulesJSON as! [[String : Any]]) {
                 rules.append(contentsOf: parsedObject)
-            }
-            */
+        }
         self.rules = rules
     }
 
@@ -256,13 +252,9 @@ extension Alamofire.DataRequest {
             }
 
             if (JSONToMap != nil) {
-                // if let parsedObject = Mapper<T>().mapArray(JSONArray: JSONToMap as! [[String : Any]]){
-                let parsedObject = Mapper<T>().mapArray(JSONArray: (JSONToMap as! [[String : Any]]))
-                /*
-                if parsedObject {
+                if let parsedObject:[T] = Mapper<T>().mapArray(JSONArray: (JSONToMap as! [[String : Any]])) {
                     return .success(parsedObject)
                 }
-                */
             }
 
             let failureReason = "ObjectMapper failed to serialize response."
